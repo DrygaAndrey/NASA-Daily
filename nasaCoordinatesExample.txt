@@ -1,0 +1,1 @@
+https://api.nasa.gov/planetary/earth/imagery?lon=37.60&lat=48.85&dim=0.08&date=2014-12-8&api_key=dhoCv3OADT5l6jXJgouLriNXsmdUW4RqEnhhEyvR

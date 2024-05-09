@@ -1,0 +1,61 @@
+.pictureOfTheDay {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+
+    iframe {
+        position: absolute;
+        z-index: -1;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-left: 5%;
+        height: 80%;
+        width: 20%;
+        padding: 10px 30px 10px 30px;
+        color: white;
+        background-color: #212121;
+
+        h2 {
+            margin: 0px;
+            text-align: center;
+            font-size: 35px;
+        }
+
+        p {
+            font-size: 18px;
+            line-height: 26px;
+            margin: 20px 0px 0px 0px;
+        }
+
+        button {
+            width: 50%;
+            margin: 20px 0px 0px 0px;
+            height: 15%;
+            background-color: #337ab7;
+            transition: all 0.15s;
+            border: none;
+            color: white;
+            font-size: 22px;
+
+
+            &:hover {
+                background-color: #2a6497;
+                transform: scale(1.05);
+            }
+
+            &:active {
+                background-color: #23517a;
+                transform: scale(0.95);
+            }
+        }
+
+    }
+}
