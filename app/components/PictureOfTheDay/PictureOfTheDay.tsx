@@ -1,12 +1,9 @@
-'use client'
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import styles from './styles.module.scss';
-import robotoCondensed from '../../fonts/font'
-import Info from './components/info';
-import BackgroundVideo from './components/backgroundVideo';
 
-interface Picture {
+import styles from './styles.module.scss';
+import Info from './components/info';
+import Illustration from './components/illustration';
+
+export interface Picture {
     date: string;
     explanation: string;
     title: string;
@@ -15,30 +12,22 @@ interface Picture {
     media_type: string;
 }
 
-function PictureOfTheDay() {
-    const [picture, setPicture] = useState<Picture | null>(null);
-
-    useEffect(() => {
-        axios
-            .get(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_API_KEY}`)
-            .then(response => setPicture(response.data))
-            .catch(error => console.error('Error:', error));
-    }, []);
-
-    const videoId = picture?.url?.split('/').pop()?.split('?').shift();
-    console.log(videoId);
+async function PictureOfTheDay() {
+    const picture: Picture | undefined = await fetch(`https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_API_KEY}`)
+        .then(response => response.json())
+        .then(response => response as Picture)
+        .catch(error => {
+            console.error('Error:', error);
+            return undefined;
+        });
     return (
-        <div
-            className={styles.pictureOfTheDay}
-            style={{ backgroundImage: picture?.media_type === 'image' ? `url(${picture.url})` : '' }}
-        >
 
-            {picture?.media_type === 'video' && (
-                <BackgroundVideo url={picture?.url} />
-            )}
-            <Info title={picture?.title} explanation={picture?.explanation} />
-        </div >
+        <div className={styles.pictureOfTheDay}>
+            <Info title={picture && picture.title} explanation={picture && picture.explanation} />
+            <Illustration picture={picture} />
+        </div>
+
     );
 }
-
 export default PictureOfTheDay;
+

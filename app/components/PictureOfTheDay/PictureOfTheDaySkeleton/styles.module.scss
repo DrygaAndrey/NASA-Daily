@@ -1,7 +1,5 @@
 .pictureOfTheDay {
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+
     height: 400px;
     display: flex;
     align-items: center;
@@ -17,17 +15,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        img {
+
+        .img {
             max-width: 100%;
             height: 100%;
             object-fit: cover;
-        }
-
-        iframe {
-            border: none;
-            height: 100%;
-            width: 100%;
-
         }
     }
 
@@ -59,19 +51,7 @@
             border: none;
             color: white;
             font-size: 22px;
-            cursor: pointer;
-
-            &:hover {
-                background-color: #2a6497;
-                transform: scale(1.05);
-            }
-
-            &:active {
-                background-color: #23517a;
-                transform: scale(0.95);
-            }
         }
-
     }
 }
 
